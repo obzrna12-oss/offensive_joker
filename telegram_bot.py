@@ -7,26 +7,22 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from bot_instance import generate_with_service
 
 # Configuration
-TELEGRAM_BOT_TOKEN = "8514379496:AAEdzVEEtpfI8BhAjK4h3GdkljhBZi-U1ko"  # Your bot token
+TELEGRAM_BOT_TOKEN = ""  # Your bot token
 
 # Global variables for rate limiting
-TRIGGER_WORD_COOLDOWN = 1  # 5 minutes in seconds
+
+#bot cooldown to set how often the bot will hackle each user
+TRIGGER_WORD_COOLDOWN = 1  # in seconds
 user_cooldowns = {}  # user_id -> last_trigger_time
 
 # Add Telegram user IDs that can bypass cooldown
 BYPASS_USER_IDS = []  # Example: [123456789, 987654321]
 
-RACIST_WORDS = ['india', 'indian', 'curry', 'jew', 'jewish', 'israel', 'kike', 'kosher', 'haiti', 'goy', 'jeet', 'mick',
-                'jigaboo', 'hindi', 'hindu', 'mumbai', 'israeli', 'hamas', 'nigger', 'nigga', 'mexican',
-                'mexico', 'jewish', 'italy', 'italian', 'puerto rico', 'puerto rican', 'puerto', 'rican', 'rico',
-                'ireland', 'irish', 'arab', 'muslim', 'libya', 'libyan', 'argentina', 'argentinian', 'ethiopian',
-                'ethiopia', 'hitler', 'stalin', 'kkk', 'klux', 'klan']
 
-SEX_WORDS = ['fuck', 'fucking', 'fucker', 'pussy', 'vagina', 'naked', 'fag', 'homo', 'homosexual', 'gay', 'hooker',
-             'queer', 'tranny', 'transvestite', 'transexual', 'crossdresser', 'tart', 'tits', 'titties', 'striptease',
-             'strip', 'cunt', 'minge', 'tuff', 'muff', 'lesbian', 'lesbians', 'dyke', 'dick', 'ass', 'asshole', 'hard',
-             'straight', 'brothel', 'whorehouse', 'furry', 'rape', 'pedophiles', 'masturbate', 'jerk', 'cock', 'cum',
-             'faggot', 'escort', 'suck', 'butt', 'sniff', 'sniffer', 'epstein','trump']
+
+RACIST_WORDS = ['india', 'indian'']
+
+SEX_WORDS = ['fuck', 'fucking']
 
 ALL_TRIGGERS = RACIST_WORDS + SEX_WORDS
 EXCEPTIONS = []  # Add any words to exclude
