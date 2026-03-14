@@ -13,29 +13,23 @@ intents.message_content = True
 client = commands.Bot(command_prefix='!', intents=intents)
 
 # Global variables for rate limiting
+#cooldown per user to control how often the bot will heckle you
 TRIGGER_WORD_COOLDOWN = 300  # 5 minutes in seconds
 # CHANGED: Per-user cooldown instead of global
 user_cooldowns = {}  # user_id -> last_trigger_time
 
 bypass_roles = ["guidance counselor", "test role"]  # Roles that can bypass the cooldown
+#expand these lists in the lower register according to you preferences
+RACIST_WORDS = ['india', 'indian']
 
-RACIST_WORDS = ['india', 'indian', 'curry', 'jew', 'jewish', 'israel', 'kike', 'kosher', 'haiti', 'goy', 'jeet', 'mick',
-                'jigaboo', 'hindi', 'hindu', 'mumbai', 'israeli', 'hamas', 'nigger', 'nigga', 'mexican',
-                'mexico', 'jewish','italy','italian','puerto rico','puerto rican','puerto','rican','rico',
-                'ireland', 'irish','arab','muslim','libya','libyan','argentina','argentinian','ethiopian','ethiopia','kkk','klux','klan']
-
-SEX_WORDS = ['fuck', 'fucking', 'pussy', 'vagina', 'naked', 'fag', 'homo', 'homosexual', 'gay', 'hooker', 'queer',
-             'tranny',
-             'transvestite', 'transexual', 'crossdresser', 'tart', 'tits', 'titties', 'striptease', 'strip', 'cunt',
-             'minge', 'tuff', 'muff', 'lesbian', 'lesbians', 'dyke', 'dick', 'ass', 'asshole', 'hard', 'straight',
-             'brothel', 'whorehouse', 'furry', 'rape', 'pedophiles', 'masturbate', 'jerk', 'cock', 'cum','faggot','escort','suck','epstein']
+SEX_WORDS = ['fuck', 'fucking', 'pussy']
 
 ALL_TRIGGERS = RACIST_WORDS + SEX_WORDS
 
 pol_ = ['!img', '!quote', '!pol']
 EXCEPTIONS = pol_
-
-BOT_NAMES = ['MOTHER','MOTHUR']
+#names to hail the bot. you can talk with the bot directly
+BOT_NAMES = []
 
 
 def can_bypass_cooldown(user, guild):
@@ -432,5 +426,5 @@ async def on_message(message):
     else:  # if no trigger words were found we will still let llama guard evaluate it
         print(f'No trigger words detected: {message.content}')
 
-
-client.run('MTM1NDQ5NjgyMTU1MTk1NjE4MA.G2X3LM.q69XTITGZlDQZJ9wGH1pix-h2MUfFvv55T5h3k')
+#your token goes in here
+client.run()
