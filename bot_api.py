@@ -4,8 +4,8 @@ import threading
 
 app = Flask(__name__)
 
-#MODEL_PATH = "jackiebot.4.2Q6_K.gguf"
-MODEL_PATH = "Jackie_5.4_8b.Q8_0.gguf"
+
+MODEL_PATH = "" #the gguf name goes in here
 llm = Llama(model_path=MODEL_PATH, n_threads=8, n_ctx=256, verbose=False)
 lock = threading.Lock()
 
