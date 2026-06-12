@@ -236,23 +236,22 @@ def normalize_string(s):
 
 
 def format_joke(joke):
+    joke = joke.replace('\r', '').replace('\n', ' ')
+    joke = joke.strip()
 
-    if joke.endswith('\n'):
-        joke = joke[:-1]
+    words = joke.split()
+    if not words:
+        return ""
 
-    pre_formatted_joke = joke.split()
-    last_word = pre_formatted_joke[-1]
-    print(last_word)
-    if last_word[-1].isalpha():
-        print('no puctuation!')
-        last_word += '.'  # Add a period
-        pre_formatted_joke[-1] = last_word
+    last_word = words[-1]
+    if last_word and last_word[-1].isalpha():
+        last_word += '.'
+        words[-1] = last_word
 
-    corrected_joke = ' '.join(pre_formatted_joke)
-    corrected_joke = corrected_joke[0].upper() + corrected_joke[1:]
+    formatted_joke = ' '.join(words)
+    formatted_joke = formatted_joke[0].upper() + formatted_joke[1:]
 
-    print(f"Last word: {last_word}")  # Debugging print
-    return corrected_joke
+    return formatted_joke
 
 
 def generate_valid_joke(prompt_func, trigger_words, message, max_attempts=7):
